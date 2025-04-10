@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindfulAI - Your Mental Health Companion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .font-montserrat { font-family: 'Montserrat', sans-serif; }
+        .font-opensans { font-family: 'Open Sans', sans-serif; }
+        .gradient-bg {
+            background: linear-gradient(120deg, #2B6CB0, #319795);
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <i class="fas fa-brain text-blue-600 text-3xl mr-2"></i>
+                    <span class="font-montserrat font-bold text-xl text-blue-600">MindfulAI</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="font-opensans text-gray-700 hover:text-blue-600 transition">Home</a>
+                    <a href="#features" class="font-opensans text-gray-700 hover:text-blue-600 transition">Features</a>
+                    <a href="#about" class="font-opensans text-gray-700 hover:text-blue-600 transition">About</a>
+                    <a href="chat.html" class="font-opensans bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition">Start Chat</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center gradient-bg text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-20"></div>
+        <div class="container mx-auto px-6 z-10">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 text-center md:text-left">
+                    <h1 class="font-montserrat text-4xl md:text-6xl font-bold mb-6">Your AI Mental Health Companion</h1>
+                    <p class="font-opensans text-xl mb-8 opacity-90">Experience compassionate support through our AI-powered mental health companion. Available 24/7 to listen, guide, and support your emotional well-being.</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                        <a href="chat.html" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-opacity-90 transition flex items-center justify-center">
+                            <i class="fas fa-comments mr-2"></i>
+                            Start Conversation
+                        </a>
+                        <a href="#features" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition flex items-center justify-center">
+                            <i class="fas fa-info-circle mr-2"></i>
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 mt-12 md:mt-0">
+                    <img src="https://images.pexels.com/photos/7176319/pexels-photo-7176319.jpeg" alt="AI Mental Health Support" class="rounded-lg shadow-2xl max-w-md mx-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-montserrat font-bold text-center mb-16 text-gray-800">Why Choose MindfulAI?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Feature 1 -->
+                <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-brain text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-montserrat font-semibold text-xl mb-4 text-gray-800">Professional Guidance</h3>
+                    <p class="font-opensans text-gray-600">Expert-designed responses based on proven therapeutic techniques and mental health practices.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-clock text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-montserrat font-semibold text-xl mb-4 text-gray-800">24/7 Availability</h3>
+                    <p class="font-opensans text-gray-600">Access support whenever you need it, day or night, without scheduling or waiting.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-alt text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="font-montserrat font-semibold text-xl mb-4 text-gray-800">Private & Secure</h3>
+                    <p class="font-opensans text-gray-600">Your conversations are completely private and secure, ensuring confidentiality.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <img src="https://images.pexels.com/photos/4101143/pexels-photo-4101143.jpeg" alt="About MindfulAI" class="rounded-lg shadow-xl">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-montserrat font-bold mb-6 text-gray-800">About MindfulAI</h2>
+                    <p class="font-opensans text-gray-600 mb-6">MindfulAI combines advanced artificial intelligence with professional mental health expertise to provide you with compassionate, understanding support whenever you need it.</p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span class="font-opensans text-gray-600">Evidence-based therapeutic approaches</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span class="font-opensans text-gray-600">Personalized support and guidance</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span class="font-opensans text-gray-600">Regular progress tracking</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-6 md:mb-0">
+                    <i class="fas fa-brain text-blue-400 text-3xl mr-2"></i>
+                    <span class="font-montserrat font-bold text-xl">MindfulAI</span>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-blue-400 transition"><i class="fab fa-twitter text-xl"></i></a>
+                    <a href="#" class="hover:text-blue-400 transition"><i class="fab fa-facebook text-xl"></i></a>
+                    <a href="#" class="hover:text-blue-400 transition"><i class="fab fa-instagram text-xl"></i></a>
+                </div>
+            </div>
+            <div class="mt-8 text-center text-gray-400 font-opensans">
+                <p>&copy; 2024 MindfulAI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
