@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindfulAI Chat - Your Mental Health Companion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .font-montserrat { font-family: 'Montserrat', sans-serif; }
+        .font-opensans { font-family: 'Open Sans', sans-serif; }
+        .chat-container {
+            height: calc(100vh - 180px);
+        }
+        .message {
+            max-width: 80%;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .bot-message {
+            background: linear-gradient(120deg, #2B6CB0, #319795);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .emotion-tracker {
+            transition: all 0.3s ease;
+        }
+        .emotion-icon {
+            transition: all 0.2s ease;
+        }
+        .emotion-icon:hover {
+            transform: scale(1.1);
+        }
+        .typing-indicator span {
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0% { opacity: 0.2; }
+            20% { opacity: 1; }
+            100% { opacity: 0.2; }
+        }
+        .suggestion-card {
+            transition: all 0.3s ease;
+        }
+        .suggestion-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="flex flex-col h-screen">
+        <!-- Header -->
+        <header class="bg-white shadow-md py-4 px-6">
+            <div class="container mx-auto flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <i class="fas fa-brain text-blue-600 text-2xl mr-2"></i>
+                        <span class="font-montserrat font-bold text-xl text-gray-800">MindfulAI</span>
+                    </a>
+                </div>
+                
+                <!-- Emotion Tracker -->
+                <div class="emotion-tracker flex items-center space-x-4">
+                    <span class="font-opensans text-gray-600">How are you feeling?</span>
+                    <div class="flex space-x-2">
+                        <button class="emotion-icon p-2 rounded-full hover:bg-gray-100" onclick="updateEmotion('happy')">
+                            <i class="far fa-smile text-yellow-500 text-xl"></i>
+                        </button>
+                        <button class="emotion-icon p-2 rounded-full hover:bg-gray-100" onclick="updateEmotion('neutral')">
+                            <i class="far fa-meh text-gray-500 text-xl"></i>
+                        </button>
+                        <button class="emotion-icon p-2 rounded-full hover:bg-gray-100" onclick="updateEmotion('sad')">
+                            <i class="far fa-frown text-blue-500 text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <div class="flex items-center space-x-4">
+                    <button id="musicToggle" class="p-2 rounded-full hover:bg-gray-100" onclick="toggleMusic()">
+                        <i class="fas fa-music text-purple-600"></i>
+                    </button>
+                    <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-100" onclick="toggleTheme()">
+                        <i class="fas fa-moon text-gray-600"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="flex-1 flex">
+            <!-- Main Chat Area -->
+            <div class="flex-1 flex flex-col">
+                <!-- Chat Messages -->
+                <div id="chatContainer" class="flex-1 overflow-y-auto p-6 space-y-4">
+                    <!-- Welcome Message -->
+                    <div class="message bot-message text-white p-4 rounded-lg shadow-md ml-4">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-user-md text-white mr-2"></i>
+                            <span class="font-montserrat font-semibold">Dr. MindfulAI</span>
+                        </div>
+                        <p class="font-opensans">Hello! I'm Dr. MindfulAI, your mental health companion. I'm here to listen and support you. How are you feeling today?</p>
+                    </div>
+                </div>
+
+                <!-- Chat Input -->
+                <div class="bg-white border-t p-4">
+                    <div class="container mx-auto flex items-center space-x-4">
+                        <input type="text" id="messageInput" class="flex-1 p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 font-opensans" placeholder="Type your message here...">
+                        <button onclick="sendMessage()" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition flex items-center">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            <span class="font-opensans">Send</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="w-80 bg-white border-l p-6 overflow-y-auto">
+                <!-- Suggestion Cards -->
+                <div class="space-y-4">
+                    <h3 class="font-montserrat font-semibold text-gray-800 mb-4">Helpful Resources</h3>
+                    
+                    <div class="suggestion-card bg-blue-50 p-4 rounded-lg">
+                        <h4 class="font-montserrat font-semibold text-blue-800 mb-2">Breathing Exercise</h4>
+                        <p class="font-opensans text-blue-600 text-sm">Take deep breaths: inhale for 4 seconds, hold for 4, exhale for 4.</p>
+                    </div>
+
+                    <div class="suggestion-card bg-green-50 p-4 rounded-lg">
+                        <h4 class="font-montserrat font-semibold text-green-800 mb-2">Quick Meditation</h4>
+                        <p class="font-opensans text-green-600 text-sm">Find a quiet space, close your eyes, and focus on your breath for 1 minute.</p>
+                    </div>
+
+                    <div class="suggestion-card bg-purple-50 p-4 rounded-lg">
+                        <h4 class="font-montserrat font-semibold text-purple-800 mb-2">Positive Affirmation</h4>
+                        <p class="font-opensans text-purple-600 text-sm">"I am strong, capable, and worthy of peace and happiness."</p>
+                    </div>
+
+                    <div class="mt-8">
+                        <h4 class="font-montserrat font-semibold text-gray-800 mb-2">Emergency Resources</h4>
+                        <div class="bg-red-50 p-4 rounded-lg">
+                            <p class="font-opensans text-red-600 text-sm mb-2">If you're in crisis, please reach out:</p>
+                            <p class="font-opensans text-red-800 font-semibold">Emergency: 911</p>
+                            <p class="font-opensans text-red-800 font-semibold">Crisis Hotline: 988</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="backgroundMusic" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_2449b9459b.mp3?filename=meditation-ambient-music-22165.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
